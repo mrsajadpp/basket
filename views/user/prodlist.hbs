@@ -1,0 +1,17 @@
+{{#if orders}}
+{{#each orders}}
+<div class="card mx-auto rounded-0 position-static"
+  style="width: 100%; display: flex;flex-direction: row; border: none; border-bottom: 1px solid #f2f2f2;">
+  <img style="width: 80px; margin-left: 10px;" class="card-img-top" src="/images/products/{{this.product._id}}/0.jpeg"
+    alt="{{this.product._id}} - Basket">
+    <span>&nbsp;&nbsp;</span>
+  <div class="card-body">
+    <h5 class="card-title">{{this.product.title}}</h5>
+    <p class="card-text"><span style="color: green;">Quantity : {{this.quantity}}</span></p>
+    <!--<a href="/order/{{this._id}}" class="btn btn-danger"><i class="bx bx-rupee"></i></a>-->
+  </div>
+</div>
+{{/each}}
+{{else}}
+<p style="align-items: center; justify-content: center; display: flex; height: 65vh;">Ordered products is empty</p>
+{{/if}}

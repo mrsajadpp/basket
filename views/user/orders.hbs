@@ -1,0 +1,42 @@
+{{#if orders}}
+<div class="container">
+    {{#each orders}}
+    <div class="card">
+
+        <div class="infoBox">
+            <div class="rating">
+
+            </div>
+            <div onclick="loadPage('/order/list/{{this._id}}');" class="title">
+                {{this.deliveryDetails.name}}, {{this.deliveryDetails.adress}}, {{this.deliveryDetails.post}},
+                {{this.deliveryDetails.pincode}}, {{this.deliveryDetails.city}}.
+            </div>
+            <div class="gap"><br></div>
+            <div class="date">
+                <span>Order Date: <span style="color: darkgoldenrod;">{{this.date}}</span></span>
+            </div>
+            <div class="orderId">
+                <span>Order ID: <span style="color: darkgray;">{{this._id}}</span></span>
+            </div>
+            <div class="orderstat">
+                <span>Order Status: {{#if this.status}}<span style="color: green;">Placed</span>{{else}}<span style="color: orangered;">Pending</span>{{/if}}</span>
+            </div>
+            <div class="gap"><br></div>
+            <div onclick="loadPage('/order/list/{{this._id}}');" class="price">
+                <span class="p_price">&#x20B9;{{this.tottalAmount}}</span>
+            </div>
+            <div class="buttonGroup">
+                <button onclick="loadPage('/order/cancel/{{this._id}}')" class="buy">
+                    <box-icon name='x' color="#ff9f00"></box-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    <br><br><br><br>
+</div>
+{{else}}
+<div class="container" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100vh;">
+    <span>Orders is Empty.</span>
+</div>
+{{/if}}

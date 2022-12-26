@@ -1,0 +1,94 @@
+{{#if cart}}
+<div class="container">
+    {{#each cart}}
+    <div class="card">
+        <div onclick="loadPage('/cartlist/{{this._id}}');" class="imgContainer">
+            <img src="/images/products/{{this.item}}/0.jpeg" alt="{{this.title}} - Basket">
+            <img src="/images/products/{{this.item}}/1.jpeg">
+        </div>
+        <div class="infoBox">
+            <div class="rating">
+
+            </div>
+            <div onclick="loadPage('/cartlist/{{this._id}}');" class="title">
+                {{this.product.title}}
+            </div>
+            <div onclick="loadPage('/cartlist/{{this._id}}');" class="price">
+                {{#if this.product.old_price}}
+                <span class="p_price">&#x20B9;{{this.product.price}}</span>&nbsp;<span
+                    class="old_price">&#x20B9;{{this.product.old_price}}</span>
+                {{else}}
+                <span class="p_price">&#x20B9;{{this.product.price}}</span>
+                {{/if}}
+            </div>
+            <div class="delivery">
+                <span>Delivery charge: &#x20B9;{{this.product.delivery_charge}}</span>
+            </div>
+            <div class="buttonGroup">
+                <button onclick="changeQuantity('{{this._id}}', '{{this.item}}', -1, {{this.quantity}}, {{user._id}})"
+                    class="buy">
+                    <box-icon name='minus' color="#fff"></box-icon>
+                </button>
+                <div class="quantity">
+                    <span>{{this.quantity}}</span>
+                </div>
+                <button onclick="changeQuantity('{{this._id}}', '{{this.item}}', 1, {{this.quantity}}, {{user._id}})"
+                    class="addToCart">
+                    <box-icon name='plus' color="#fff"></box-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+    <br><br><br><br>
+</div>
+<div class="totalContainer">
+    <div class="charge">
+        <div class="totalCharge">
+            {{#if totalAmount}}
+            Total amount: &#x20B9;{{totalAmount}}
+            {{else}}
+            Total amount: &#x20B9;0
+            {{/if}}
+        </div>
+        <div class="delCharge">
+            {{#if deliveryCharge}}
+            Shipping: &#x20B9;{{deliveryCharge}}
+            {{else}}
+            Shipping: &#x20B9;0
+            {{/if}}
+        </div>
+    </div>
+    <div class="button">
+        <button onclick="loadPage('/buy/{{user._id}}');">
+            <box-icon type='solid' name='shopping-bag' color='#fff'></box-icon>
+        </button>
+    </div>
+</div>
+{{else}}
+<div class="container" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100vh;">
+    <span>Cart is Empty.</span>
+</div>
+{{/if}}
+<script>
+    function changeQuantity(cartId, productId, count, quantity, userId) {
+        $.ajax({
+            url: '/quantity',
+            data: {
+                cart: cartId,
+                product: productId,
+                count: count,
+                quantity: quantity,
+                user: userId
+            },
+            method: 'post',
+            success: (response) => {
+                if (response.removeProduct) {
+                    location.reload();
+                } else {
+                    location.reload();
+                }
+            }
+        })
+    }
+</script>

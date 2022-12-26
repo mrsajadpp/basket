@@ -1,0 +1,22 @@
+<div id="Header" class="header hide">
+    <div class="left">
+        <button onclick="menu();">
+            <box-icon name='menu'></box-icon>
+        </button>
+    </div>
+    <div class="center">
+        <a href="/">
+            <img src="/images/banner.png" alt="Basket">
+        </a>
+    </div>
+    <div class="right">
+        <a href="/cart">
+            <button>
+                <box-icon name='cart-alt'></box-icon>
+                {{#if user.cartCount}}
+                <span class="not-dot">{{user.cartCount}}</span>
+                {{/if}}
+            </button>
+        </a>
+    </div>
+</div>

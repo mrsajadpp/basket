@@ -1,0 +1,19 @@
+<div class="container">
+    <img src="/images/ybanner.png" alt="">
+    <div class="inputContainer">
+        <form action="/request/reset" method="post">
+            <div class="input">
+                <input type="text" id="username" name="username" oninput="checkusername(this.id);"
+                    placeholder="Username" required>
+            </div>
+            <div class="input loginInp">
+                <button type="submit" title="Click to send email to reset your password.">SEND EMAIL</button>
+            </div>
+        </form>
+    </div>
+</div>
+{{#if error}}
+<script>
+    alert('{{error}}');
+</script>
+{{/if}}

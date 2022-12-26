@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{#if description}}
+  <meta name="description" content="{{description}} - Basket">
+  {{else}}
+  <meta name="description" content="Electronics shopping website - Basket">
+  {{/if}}
+  {{#if preImg}}
+  <meta name="image" content="{{preImg}}">
+  {{else}}
+  <meta name="image" content="/images/favicon.png">
+  {{/if}}
+  <title>{{title}} - Basket</title>
+  <!--<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+  <script src="/javascripts/jquery.min.js"></script>-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="/javascripts/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/stylesheets/bootstrap-icons.css">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  {{#if style}}
+  <link rel="stylesheet" href="/stylesheets/{{style}}.css">
+  {{/if}}
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FV3SP1P21T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-FV3SP1P21T');
+  </script>
+</head>
+
+<body>
+  {{#if hide}}
+  {{>loader}}
+  <div class="body hide" id="body">
+    {{{body}}}
+  </div>
+  {{else}}
+  <div class="body hide" id="body">
+    {{{body}}}
+  </div>
+  {{>loader}}
+  {{>header}}
+  {{>menu}}
+  {{/if}}
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  <script src="/javascripts/main.js"></script>
+  {{#if script}}
+  <script src="/javascripts/{{script}}.js"></script>
+  {{/if}}
+</body>
+
+</html>

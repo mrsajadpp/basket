@@ -1,0 +1,99 @@
+<div class="container">
+    <div class="addressarea">
+        <form id="form">
+          <div class="input first">
+            <input type="text" name="firstname" id="firstname" placeholder="First Name" required>
+            <span>&nbsp;&nbsp;</span>
+            <input type="text" name="lastname" id="lastname" placeholder="Last Name" required>
+          </div>
+          <div class="input number">
+            <input type="text" name="countrycode" id="countrycode" readonly value="+91" required>
+            <span>&nbsp;&nbsp;</span>
+            <input type="number" name="phonenumber" id="phonenumber" placeholder="Number" minlength="10" maxlength="10" required>
+          </div>
+          <div class="input">
+            <input type="text" name="email" id="email" placeholder="Email" value="{{user.email}}" required>
+          </div>
+          <div class="input">
+            <input type="text" name="country" id="country" value="INDIA" readonly required>
+          </div>
+          <div class="input">
+            <input type="text" name="state" id="state" placeholder="State" required>
+          </div>
+          <div class="input">
+            <input type="text" name="city" id="city" placeholder="City" required>
+          </div>
+          <div class="input">
+            <input type="text" name="po" id="po" placeholder="Post office" required>
+          </div>
+          <div class="input">
+            <input type="text" name="adress" id="adress" placeholder="Adress" required>
+          </div>
+          <div class="input">
+            <input type="number" name="pincode" id="pincode" placeholder="Pincode" required>
+          </div>
+          <div class="input btn">
+            <button type="submit">PLACE ORDER</button>
+          </div>
+        </form>
+    </div>
+    <div class="s"><br><br></div>
+</div>
+<script>
+    $("#form").submit((e) => {
+        e.preventDefault()
+        $.ajax({
+            url: '/placeorder',
+            method: 'post',
+            data: $("#form").serialize(),
+            success: (response) => {
+                razorpayPayment(response.response, response.data, response.orderId)
+            }
+        })
+    })
+    function razorpayPayment(order, details, orderId) {
+        var options = {
+            "key": "rzp_test_IZT277pRk7J4jj", // Enter the Key ID generated from the Dashboard
+            "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": order.currency,
+            "name": "Basket",
+            "description": "Payment gateway.",
+            "image": "/images/favicon.png",
+            "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "handler": (response) => {
+                verifyPayment(order, response, orderId)
+            },
+            "prefill": {
+                "name": details.firstname + '' + details.lastname,
+                "email": details.email,
+                "contact": details.phonenumber
+            },
+            "notes": {
+                "address": "Basket online shopping store."
+            },
+            "theme": {
+                "color": "yellow"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    }
+    function verifyPayment(order, payment, orderId) {
+        $.ajax({
+            url: '/verifypayment',
+            method: 'post',
+            data: {
+                order,
+                payment,
+                orderId: orderId.insertedId.toString()
+            },
+            success: (response) => {
+                if (response) {
+                    location.href = '/status/true';
+                } else {
+                    location.href = '/status/false';
+                }
+            }
+        })
+    }
+</script>

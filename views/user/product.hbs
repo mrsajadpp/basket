@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="card">
+        <div id="imgContainer" class="imgContainer">
+            <img src="/images/products/{{product._id}}/0.jpeg" alt="{{product.title}} - Basket">
+            <img src="/images/products/{{product._id}}/1.jpeg">
+        </div>
+        <div class="infoBox">
+            <div class="rating">
+
+            </div>
+            <div class="title">
+                {{product.title}}
+            </div>
+            <div class="price">
+                {{#if product.old_price}}
+                <span class="p_price">&#x20B9;{{product.price}}</span>&nbsp;<span
+                    class="old_price">&#x20B9;{{product.old_price}}</span>
+                {{else}}
+                <span class="p_price">&#x20B9;{{product.price}}</span>
+                {{/if}}
+            </div>
+            <div class="delivery">
+                {{#if product.delivery_charge}}
+                <span>Delivery charge: <span style="color: olivedrab;">&#x20B9;{{product.delivery_charge}}</span></span>
+                {{else}}
+                {{/if}}
+            </div>
+            {{#if product.size}}
+            <div class="size">
+                <div class="input">
+                    <select name="size" id="size">
+                        {{#each product.size}}
+                        <option value="{{this.type}}">{{this.type}}</option>
+                        {{/each}}
+                    </select>
+                    <input type="text" name="prodId" hidden required readonly value="{{product._id}}">
+                </div>
+            </div>
+            {{/if}}
+            <div class="description">
+                {{product.description}}
+            </div>
+            <div class="gap">
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+{{#if products}}
+<div class="container">
+    {{#each products}}
+    <div class="card">
+        <div onclick="loadPage('/product/{{this._id}}');" class="imgContainer">
+            <img src="/images/products/{{this._id}}/0.jpeg" alt="{{this.title}} - Basket">
+            <img src="/images/products/{{this._id}}/1.jpeg">
+        </div>
+        <div class="infoBox">
+            <div class="rating">
+
+            </div>
+            <div onclick="loadPage('/product/{{this._id}}');" class="title">
+                {{this.title}}
+            </div>
+            <div onclick="loadPage('/product/{{this._id}}');" class="price">
+                {{#if this.old_price}}
+                <span class="p_price">&#x20B9;{{this.price}}</span>&nbsp;<span
+                    class="old_price">&#x20B9;{{this.old_price}}</span>
+                {{else}}
+                <span class="p_price">&#x20B9;{{this.price}}</span>
+                {{/if}}
+            </div>
+            <div class="buttonGroup">
+                <button onclick="loadPage('/fav/{{this._id}}')" class="buy">
+                    <box-icon name='heart' color='#fff'></box-icon>
+                </button>
+                <button onclick="loadPage('/addcart/{{this._id}}')" class="addToCart">
+                    ADD CART
+                </button>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{/if}}
+<div class="buttonGroup">
+    <a title="Add To Cart This Product" class="addToCart" onclick="loadPage('/addcart/{{product._id}}');">
+        <box-icon name='cart-add' color='#fff'></box-icon>
+    </a>
+</div>

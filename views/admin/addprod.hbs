@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="addressarea">
+        <form action="/add" method="post" enctype="multipart/form-data" class="form">
+            <div class="input first">
+                <input type="text" name="title" id="tite" placeholder="Title" minlength="10" maxlength="20" required>
+            </div>
+            <div class="input number">
+                <input type="number" name="price" id="price" placeholder="Price" required>
+                <span>&nbsp;&nbsp;</span>
+                <input type="number" name="oldprice" id="oldprice" value="0" placeholder="Old" >
+            </div>
+            <div class="input">
+                <input type="text" name="delivery" id="delivery" placeholder="Delivery Charge" required>
+            </div>
+            <div class="input">
+                <input type="text" name="category" id="category" placeholder="Category" required>
+            </div>
+            <div class="input">
+                <div class="check-cont">S:<input type="checkbox" name="size" id="s" value="S" ></div>
+                <div class="check-cont">M:<input type="checkbox" name="size" id="m" value="M" ></div>
+                <div class="check-cont">L:<input type="checkbox" name="size" id="l" value="L" ></div>
+                <div class="check-cont">XL:<input type="checkbox" name="size" id="xl" value="XL" ></div>
+            </div>
+            <div class="input">
+                <input hidden="hidden" type="file" maxlength="2" minlength="2" name="images" id="images" accept="image/jpeg" multiple="multiple">
+                <div onclick="upload();" class="inpfile">
+                    <box-icon type='solid' name='file-plus' color="#ffff"></box-icon>
+                </div> 
+            </div>
+            <div class="input txtarea">
+                <textarea name="description" id="description" cols="30" rows="10" placeholder="Description" required minlength="100"></textarea>
+            </div>
+            <div class="input btn">
+                <button type="submit">ADD PRODUCT</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    function upload() {
+        let btn = document.getElementById('images');
+        btn.click();
+    }
+</script>

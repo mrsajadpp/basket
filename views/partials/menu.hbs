@@ -1,0 +1,124 @@
+<div class="menu-bar hide" id="MenuBar">
+    <div class="menu-container">
+        <div class="menu-close">
+            <button onclick="menu();" class="close-icon">
+                <box-icon name='x' ></box-icon>
+            </button>
+        </div>
+        <div class="search-area">
+            <form action="/search" method="get">
+                <input type="text" name="q" id="query" class="search-bar" placeholder="Search">
+                <button type="submit" class="search-btn">
+                    <box-icon name='search' size="sm"></box-icon>
+                </button>
+            </form>
+        </div>
+        <ul style="margin-top: 30px;">
+            <a href="/">
+                <li>
+                    <box-icon name='home' flip='horizontal'></box-icon>&nbsp;HOME
+                </li>
+            </a>
+        </ul>
+        <ul>
+            <a href="/orders">
+                <li>
+                    <box-icon name='package' flip='horizontal'></box-icon>&nbsp;ORDERS
+                </li>
+            </a>
+        </ul>
+        <ul>
+            <a href="/track">
+                <li>
+                    <box-icon name='current-location'></box-icon>&nbsp;TRACK ORDER
+                </li>
+            </a>
+        </ul>
+        <ul>
+            <a href="/cart">
+                <li>
+                    <box-icon name='cart-alt'></box-icon>&nbsp;CART&nbsp;
+                    {{#if user.cartCount}}
+                    <span class="not-dot">{{user.cartCount}}</span>
+                    {{/if}}
+                </li>
+            </a>
+        </ul>
+        <ul>
+            <a href="/fav">
+                <li>
+                    <box-icon name='heart'></box-icon>&nbsp;FAVOURITES&nbsp;
+                </li>
+            </a>
+        </ul>
+        <hr>
+        <ul>
+            <a href="/about" style="margin-top: 5px;">
+                <li>
+                    <box-icon name='code-alt'></box-icon>&nbsp;ABOUT
+                </li>
+            </a>
+        </ul>
+        <hr>
+        <ul >
+            <a href="/placed" style="margin-top: 5px;">
+                <li>
+                    <box-icon name='shopping-bag'></box-icon>&nbsp;PLACED
+                </li>
+            </a>
+        </ul>
+        <hr>
+        {{#if status}}
+        <ul >
+            <a href="/account" style="margin-top: 5px;">
+                <li>
+                    <box-icon name='user'></box-icon>&nbsp;ACCOUNT
+                </li>
+            </a>
+        </ul>
+        <hr>
+        {{/if}}
+        {{#if user.admin}}
+        <ul >
+            <a href="/add" style="margin-top: 5px;">
+                <li>
+                    <box-icon name='plus'></box-icon>&nbsp;NEW PRODUCT
+                </li>
+            </a>
+        </ul>
+        <hr>
+        <ul >
+            <a href="/products" style="margin-top: 5px;">
+                <li>
+                    <box-icon name='folder' ></box-icon>&nbsp;PRODUCTS
+                </li>
+            </a>
+        </ul>
+        <hr>
+        <ul >
+            <a href="/user/orders" style="margin-top: 5px;">
+            <li>
+                <box-icon name='time-five' ></box-icon>&nbsp;USER ORDERS
+            </li>
+            </a>
+        </ul>
+        <hr>
+        {{/if}}
+        <ul  class="login-ul">
+            {{#if status}}
+            <a href="/logout" class="login-li" style="margin-top: 5px;">
+                <li style="color: red;">
+                    <box-icon name='log-out' color="red"></box-icon>&nbsp;LOGOUT
+                </li>
+            </a>
+            {{else}}
+            <a href="/login" class="login-li" style="margin-top: 5px;">
+                <li style="color: orange;">
+                    <box-icon name='user-plus' color="orange"></box-icon>&nbsp;LOGIN
+                </li>
+            </a>
+            {{/if}}
+        </ul>
+        <hr>
+    </div>
+</div>

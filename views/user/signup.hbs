@@ -1,0 +1,27 @@
+<div class="container">
+    <img src="/images/ybanner.png" alt="">
+    <div class="inputContainer">
+        <form action="/signup" method="post">
+        <div class="input">
+            <input type="text" id="username" name="username" oninput="checkUsername(this.id);" placeholder="Username" required>
+        </div>
+        <div class="input">
+            <input type="emai" id="email" name="email" oninput="checkEmail(this.id);" placeholder="Email" required>
+        </div>
+        <div class="input">
+            <input type="password" name="password" id="password" placeholder="Password" required>
+        </div>
+        <div class="input loginInp">
+            <button type="submit" title="Click to login with your existing account.">SIGNUP</button>
+        </div>
+        <div class="info">
+            <span>Do you have a account? <a href="/login">LogIn.</a></span>
+        </div>
+        </form>
+    </div>
+</div>
+{{#if error}}
+<script>
+    alert('{{error}}');
+</script>
+{{/if}}

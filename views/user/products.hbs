@@ -1,0 +1,40 @@
+{{#if products}}
+<div class="container">
+    {{#each products}}
+    <div class="card">
+        <div onclick="loadPage('/product/{{this._id}}');" class="imgContainer">
+            <img src="/images/products/{{this._id}}/0.jpeg" alt="{{this.title}} - Basket">
+            <img src="/images/products/{{this._id}}/1.jpeg">
+        </div>
+        <div class="infoBox">
+            <div class="rating">
+
+            </div>
+            <div onclick="loadPage('/product/{{this._id}}');" class="title">
+                {{this.title}}
+            </div>
+            <div onclick="loadPage('/product/{{this._id}}');" class="price">
+                {{#if this.old_price}}
+                <span class="p_price">&#x20B9;{{this.price}}</span>&nbsp;<span
+                    class="old_price">&#x20B9;{{this.old_price}}</span>
+                {{else}}
+                <span class="p_price">&#x20B9;{{this.price}}</span>
+                {{/if}}
+            </div>
+            <div class="buttonGroup">
+                <button onclick="loadPage('/fav/{{this._id}}')" class="buy">
+                    <box-icon name='heart' color='#fff'></box-icon>
+                </button>
+                <button onclick="loadPage('/addcart/{{this._id}}')" class="addToCart">
+                    ADD CART
+                </button>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{else}}
+<div class="container" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100vh;">
+    <span>Products is Empty.</span>
+</div>
+{{/if}}

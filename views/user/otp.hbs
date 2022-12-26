@@ -1,0 +1,22 @@
+<div class="container">
+    <img src="/images/ybanner.png" alt="">
+    <div class="inputContainer">
+        <form action="/verifyotp" method="post">
+        <div class="input">
+            <input type="number" id="otp" name="otp" placeholder="Otp" required>
+        </div>
+        <input hidden="hidden" type="text" id="uid" name="uid" value="{{uid}}" >
+        <div class="input loginInp">
+            <button type="submit" id="verify" title="Click to login with your existing account.">VERIFY</button>
+        </div>
+        <div class="info">
+            <span>Check your email or email spam section.</span>
+        </div>
+        </form>
+    </div>
+</div>
+{{#if error}}
+<script>
+    alert('{{error}}');
+</script>
+{{/if}}
