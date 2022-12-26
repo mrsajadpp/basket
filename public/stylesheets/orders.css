@@ -1,0 +1,119 @@
+.totalContainer{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    background-color: #fff;
+    color: #000;
+    position: fixed;
+    bottom: 0px;
+    padding: 15px;
+    box-shadow: 2px 2px 5px #444;
+}
+.totalContainer .charge {
+    width: 120%;
+}
+.totalContainer .button {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.totalContainer .button button {
+    width: 100px;
+    height: 40px;
+    border: 0px;
+    background-color: #fb641b;
+    transition: 0.5s all;
+}
+.totalContainer .button button:hover {
+    background-color: #ff9f00;
+}
+.container{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    background-color: #efefef;
+    flex-direction: column;
+    margin-top: 60px;
+}
+.card{
+    background-color: #fff;
+    width: 100vw;
+    height: 100%;
+    padding: 15px;
+    margin-top: 1px;
+}
+.card .imgContainer img{
+    width: 100%;
+}
+.card .imgContainer img:nth-child(2){
+    position: absolute;
+    top: -20%;
+    left: 0px;
+    opacity: 0;
+    transition: 0.5s all;
+}
+.card .imgContainer:hover img:nth-child(2){
+    opacity: 1;
+    top: 0px;
+}
+.card .infoBox .rating{
+    margin: 5px 0;
+    display: none;
+}
+.card .infoBox .rating img{
+    height: 12px;
+}
+.card .infoBox .title{
+    margin: 5px 0;
+    max-height: 170px;
+    font-weight: 500;
+    color: #444;
+    font-family: "Poppins", sans-serif;
+    margin-top: 10px;
+}
+.card .infoBox .price{
+    font-size: 19px;
+    font-weight: 300;
+}
+.card .infoBox .price .p_price{
+    color: rgb(1, 138, 1);
+}
+.card .infoBox .price .old_price{
+    color: rgb(204, 0, 0);
+    text-decoration: line-through;
+}
+.card .infoBox .delivery {
+    margin-top: 10px;
+    color: #444;
+}
+.card .infoBox .buttonGroup{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+.card .infoBox .buttonGroup button{
+    border: 0px;
+    outline: 0px;
+    color: #fff;
+    padding: 7px 15px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card .infoBox .buttonGroup .quantity {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card .infoBox .buttonGroup button.buy{
+    background-color: #f7e6cb;
+    transition: 0.5s all;
+    width: 100%;
+}
+.card .infoBox .buttonGroup button.buy:hover{
+    background-color: #ffe8dc;
+}
